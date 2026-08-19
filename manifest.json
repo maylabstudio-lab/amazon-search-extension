@@ -1,10 +1,9 @@
 {
   "manifest_version": 3,
   "name": "Amazon Search Filter",
-  "version": "1.0",
+  "version": "1.0.0",
   "description": "Amazonの検索条件（発送元・割引率など）をワンクリックで適用します。",
   "action": {
     "default_popup": "popup.html"
-  },
-  "permissions": ["activeTab"]
+  }
 }
