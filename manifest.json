@@ -5,5 +5,9 @@
   "description": "Amazonの検索条件（発送元・割引率など）をワンクリックで適用します。",
   "action": {
     "default_popup": "popup.html"
+  },
+  "permissions": ["storage"],
+  "background": {
+    "service_worker": "background.js"
   }
 }
