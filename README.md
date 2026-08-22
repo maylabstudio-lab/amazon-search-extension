@@ -9,7 +9,7 @@ Amazonの検索パラメータをポップアップから指定して、条件�
 - `parametor.txt` に定義したAmazon直販商品フィルターの適用
 - 10%、20%、30%、40%、50%以上の割引率フィルター
 - 検索結果を新しいタブで開く
-- プロ版で検索条件のプリセットを保存・読み込み・削除
+- 開発者への任意のコーヒー1杯分の支援
 
 検索URLには、次のAmazonパラメータを使用します。
 
@@ -63,42 +63,20 @@ cd amazon-search-extension
 
 `chrome://extensions` の拡張機能一覧で、この拡張機能の「更新」ボタンをクリックしてください。変更後の `manifest.json`、`popup.html`、`popup.js` が読み込まれます。
 
-## プロ版・ExtensionPayの設定
+## 開発者を支援するリンクの設定
 
-## 外部バックエンド
+この拡張機能は、機能を制限せず無料で提供し、利用者が任意のタイミングで支援できる形にしています。支援リンクはポップアップの「開発者を支援する」から新しいタブで開きます。
 
-APIキーや検証ロジックを拡張機能へ埋め込むと利用者から読み取られるため、秘密情報は `backend/` のAPIサーバーで処理します。最小構成のNode.jsサーバーには、`/health` と `/v1/pro/status` を用意しています。
+1. Buy Me a Coffeeなどの支援サービスで自分のページを作成します。
+2. `popup.html` の `https://www.buymeacoffee.com/yourusername` を自分の支援ページURLへ置き換えます。
+3. Chromeの拡張機能一覧で「更新」をクリックします。
 
-1. `backend/.env.example` を参考に、サーバー環境変数へ `PRO_API_KEY` を設定します。
-2. `ALLOWED_ORIGINS` に本番拡張機能の `chrome-extension://<拡張機能ID>` を設定します。
-3. `backend/README.md` を参考に、HTTPSでバックエンドをデプロイします。
-4. `manifest.json` の `host_permissions` を実際のAPIドメインだけに変更します。
+支援サービスのURLや決済情報は拡張機能内に保存・処理しません。支援ページ側で決済が行われます。
 
-`PRO_API_KEY` や外部サービスのAPIキーを `popup.js`、`background.js`、Manifest、Gitへ追加しないでください。現在のクライアントは従来のローカル判定を維持しており、バックエンドのユーザー認証と決済Webhookを接続するまでは本番の有料版判定として使用しないでください。
+## 外部バックエンド（現在は使用しません）
 
-### 本番の有料版判定に必要な接続
+以前検討した外部バックエンドとExtensionPayは、寄付型モデルへの変更に伴い現在の拡張機能では使用しません。`backend/` 関連ファイルも削除済みです。
 
-現在の `backend/server.js` は、サーバー側の秘密キーを検証する最小サンプルです。Chrome拡張機能にこのキーを配布してはいけません。本番では次の流れに置き換えてください。
-
-1. ExtensionPayの決済完了・解約Webhookをバックエンドで受信します。
-2. Webhook署名を検証し、ユーザーIDと購入状態をデータベースへ保存します。
-3. 拡張機能のログインまたはExtensionPayのユーザー識別情報を、HTTPSでバックエンドへ送ります。
-4. バックエンドはユーザー単位の短期トークンを検証して、`isProUser` だけを返します。
-5. 拡張機能は返却された状態を `chrome.storage.local` にキャッシュします。
-
-APIキーを使う外部サービスがある場合も、呼び出しはバックエンドから行い、拡張機能には結果だけを返します。APIキーの偽装を防ぐには、単純なクライアントフラグではなく、決済Webhookとユーザー認証を組み合わせてください。
-
-プロ版プリセットの保存には `chrome.storage.local` の `isProUser` フラグを使用します。現在のリポジトリは無料版として動作し、`isProUser` が `true` の場合だけプリセット保存を許可します。
-
-決済を有効化する場合は、次の手順が必要です。
-
-1. ExtensionPayでアプリを作成し、アプリIDを取得します。
-2. ExtensionPayの公式ライブラリを `extpay.js` という名前でプロジェクト直下に配置します。
-3. `background.js` の `REPLACE_WITH_EXTENSIONPAY_APP_ID` を取得したアプリIDに置き換えます。
-4. `background.js` は `ExtPay(...).getUser()` の `user.paid` を確認し、`isProUser` を同期します。
-5. `chrome://extensions` で拡張機能を更新して動作確認します。
-
-アプリIDや決済状態をソースコードに直接公開しないでください。ExtensionPayの公式ドキュメントと利用規約、Chrome Web Storeの課金要件を確認してから公開してください。
 
 ## ファイル構成
 
@@ -116,4 +94,4 @@ amazon-search-extension/
 - 現在の検索先はAmazon.co.jpです。
 - `popup.js` の `associateTag` は仮値 `xxxx-22` です。公開前にAmazonから発行された実際のアソシエイトタグへ変更してください。
 - Amazon側の仕様変更により、検索パラメータの動作が変わる場合があります。
-- この拡張機能は商品情報を収集・保存せず、検索URLを生成してAmazonを開くだけです。
+- この拡張機能は商品情報を収集・保存せず、検索URLを生成してAmazonを開くだけです。# amazon-search-extension
