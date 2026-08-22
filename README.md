@@ -65,6 +65,29 @@ cd amazon-search-extension
 
 ## プロ版・ExtensionPayの設定
 
+## 外部バックエンド
+
+APIキーや検証ロジックを拡張機能へ埋め込むと利用者から読み取られるため、秘密情報は `backend/` のAPIサーバーで処理します。最小構成のNode.jsサーバーには、`/health` と `/v1/pro/status` を用意しています。
+
+1. `backend/.env.example` を参考に、サーバー環境変数へ `PRO_API_KEY` を設定します。
+2. `ALLOWED_ORIGINS` に本番拡張機能の `chrome-extension://<拡張機能ID>` を設定します。
+3. `backend/README.md` を参考に、HTTPSでバックエンドをデプロイします。
+4. `manifest.json` の `host_permissions` を実際のAPIドメインだけに変更します。
+
+`PRO_API_KEY` や外部サービスのAPIキーを `popup.js`、`background.js`、Manifest、Gitへ追加しないでください。現在のクライアントは従来のローカル判定を維持しており、バックエンドのユーザー認証と決済Webhookを接続するまでは本番の有料版判定として使用しないでください。
+
+### 本番の有料版判定に必要な接続
+
+現在の `backend/server.js` は、サーバー側の秘密キーを検証する最小サンプルです。Chrome拡張機能にこのキーを配布してはいけません。本番では次の流れに置き換えてください。
+
+1. ExtensionPayの決済完了・解約Webhookをバックエンドで受信します。
+2. Webhook署名を検証し、ユーザーIDと購入状態をデータベースへ保存します。
+3. 拡張機能のログインまたはExtensionPayのユーザー識別情報を、HTTPSでバックエンドへ送ります。
+4. バックエンドはユーザー単位の短期トークンを検証して、`isProUser` だけを返します。
+5. 拡張機能は返却された状態を `chrome.storage.local` にキャッシュします。
+
+APIキーを使う外部サービスがある場合も、呼び出しはバックエンドから行い、拡張機能には結果だけを返します。APIキーの偽装を防ぐには、単純なクライアントフラグではなく、決済Webhookとユーザー認証を組み合わせてください。
+
 プロ版プリセットの保存には `chrome.storage.local` の `isProUser` フラグを使用します。現在のリポジトリは無料版として動作し、`isProUser` が `true` の場合だけプリセット保存を許可します。
 
 決済を有効化する場合は、次の手順が必要です。

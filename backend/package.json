@@ -1,0 +1,13 @@
+{
+  "name": "amazon-search-extension-backend",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Backend API for Amazon Search Filter",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
