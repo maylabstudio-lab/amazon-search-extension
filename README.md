@@ -68,7 +68,7 @@ cd amazon-search-extension
 この拡張機能は、機能を制限せず無料で提供し、利用者が任意のタイミングで支援できる形にしています。支援リンクはポップアップの「開発者を支援する」から新しいタブで開きます。
 
 1. Buy Me a Coffeeなどの支援サービスで自分のページを作成します。
-2. `popup.html` の `https://www.buymeacoffee.com/yourusername` を自分の支援ページURLへ置き換えます。
+2. 支援ページURLは `https://buymeacoffee.com/maylab` に設定済みです。支援先を変更する場合は、`popup.html` のリンクを置き換えてください。
 3. Chromeの拡張機能一覧で「更新」をクリックします。
 
 支援サービスのURLや決済情報は拡張機能内に保存・処理しません。支援ページ側で決済が行われます。

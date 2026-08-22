@@ -40,17 +40,11 @@
       button { min-height: 44px; border: 0; border-radius: 7px; color: #fff; background: var(--accent); font: inherit; font-size: 14px; font-weight: 800; cursor: pointer; }
       button:hover { background: var(--accent-dark); }
       button:focus-visible { outline: 3px solid #f0b496; outline-offset: 2px; }
-      .presets { display: grid; gap: 8px; padding-top: 4px; border-top: 1px solid var(--line); }
-      .preset-row { display: flex; gap: 7px; }
-      .preset-row input { flex: 1; min-width: 0; min-height: 36px; padding: 0 9px; border: 1px solid var(--line); border-radius: 7px; font: inherit; }
-      .secondary { min-height: 36px; padding: 0 10px; color: var(--ink); background: #fff; border: 1px solid var(--line); font-size: 12px; }
-      .secondary:hover { background: #eef2ef; }
-      .preset-list { display: grid; gap: 5px; }
-      .preset-item { display: flex; align-items: center; justify-content: space-between; gap: 7px; font-size: 12px; }
-      .preset-load { flex: 1; min-height: 30px; padding: 0 8px; color: var(--ink); background: #fff; border: 1px solid var(--line); text-align: left; font-size: 12px; }
-      .pro-note { margin: 0; color: var(--muted); font-size: 11px; line-height: 1.4; }
+      .support { margin-top: 18px; padding-top: 14px; border-top: 1px solid var(--line); }
+      .support p { margin: 0 0 8px; color: var(--muted); font-size: 11px; line-height: 1.4; }
+      .support-link { display: block; padding: 9px 10px; border: 1px solid #e7c6b5; border-radius: 7px; color: var(--accent-dark); background: #fff8f4; font-size: 12px; font-weight: 700; text-align: center; text-decoration: none; }
+      .support-link:hover { background: #ffede3; }
       .affiliate-note { margin: 16px 0 0; color: var(--muted); font-size: 10px; line-height: 1.4; }
-      .message { min-height: 16px; margin: 0; color: var(--accent-dark); font-size: 11px; }
     </style>
   </head>
   <body>
@@ -83,15 +77,9 @@
         </div>
         <button id="search-btn" type="submit">Amazonで検索する</button>
       </form>
-      <section class="presets" aria-labelledby="preset-heading">
-        <label id="preset-heading">検索プリセット（プロ版）</label>
-        <div class="preset-row">
-          <input id="preset-name" type="text" placeholder="プリセット名" maxlength="40">
-          <button id="save-preset" class="secondary" type="button">保存</button>
-        </div>
-        <div id="preset-list" class="preset-list"></div>
-        <p id="preset-message" class="message" role="status"></p>
-        <p class="pro-note">条件を名前付きで保存して、あとから呼び出せます。</p>
+      <section class="support" aria-label="開発者を支援">
+        <p>この拡張機能が役立ったら、コーヒー1杯分のご支援をお願いします。</p>
+        <a id="support-link" class="support-link" href="https://buymeacoffee.com/maylab" target="_blank" rel="noopener noreferrer">開発者を支援する</a>
       </section>
       <p class="affiliate-note">本拡張機能はAmazonアソシエイト・プログラムを使用しています。</p>
     </main>
