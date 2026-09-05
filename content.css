@@ -1,0 +1,220 @@
+/* Amazon.co.jp のページに注入する要素のスタイル。
+   Amazon 側と衝突しないよう、すべて .asf- / #asf- 接頭辞を付ける。 */
+
+/* 除外ワードに一致した出品を隠す */
+.asf-hidden {
+  display: none !important;
+}
+
+.asf-warning-label {
+  display: inline-block;
+  margin: 4px 0 6px;
+  padding: 3px 8px;
+  border: 1px solid #d98c2b;
+  border-radius: 4px;
+  background: #fff4e5;
+  color: #8a4b00;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.asf-flagged {
+  position: relative;
+  outline: 2px solid rgba(217, 140, 43, 0.35);
+  outline-offset: 2px;
+}
+
+/* ---- 常時表示のオプションパネル（右下固定） ---- */
+#asf-panel {
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  z-index: 2147483000;
+  width: 260px;
+  border: 1px solid #d7c3b6;
+  border-radius: 10px;
+  background: #fffdfb;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+  color: #23303a;
+  font-family: -apple-system, BlinkMacSystemFont, "Hiragino Kaku Gothic ProN", sans-serif;
+  font-size: 13px;
+  line-height: 1.4;
+  overflow: hidden;
+}
+
+#asf-panel .asf-panel-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 10px;
+  background: #f4ede7;
+  cursor: default;
+}
+
+#asf-panel .asf-panel-title {
+  font-weight: 800;
+  font-size: 12px;
+  letter-spacing: 0.02em;
+}
+
+#asf-panel .asf-panel-collapse {
+  border: 0;
+  background: transparent;
+  color: #6b5c50;
+  font-size: 13px;
+  line-height: 1;
+  cursor: pointer;
+  padding: 2px 4px;
+}
+
+#asf-panel .asf-panel-body {
+  display: grid;
+  gap: 9px;
+  padding: 10px;
+}
+
+#asf-panel[data-collapsed="true"] .asf-panel-body {
+  display: none;
+}
+
+#asf-panel .asf-panel-row {
+  display: flex;
+  gap: 6px;
+}
+
+#asf-panel .asf-kw {
+  flex: 1;
+  min-width: 0;
+  min-height: 32px;
+  padding: 0 8px;
+  border: 1px solid #cdd6d8;
+  border-radius: 6px;
+  font: inherit;
+  font-size: 13px;
+  background: #fff;
+  color: inherit;
+}
+
+#asf-panel .asf-search {
+  flex: none;
+  min-height: 32px;
+  padding: 0 12px;
+  border: 0;
+  border-radius: 6px;
+  background: #e36d2e;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+#asf-panel .asf-search:hover {
+  background: #bd4f1b;
+}
+
+#asf-panel .asf-check {
+  display: flex;
+  align-items: flex-start;
+  gap: 7px;
+  margin: 0;
+  font-weight: 500;
+}
+
+#asf-panel .asf-check input {
+  width: 15px;
+  height: 15px;
+  margin-top: 1px;
+  flex: none;
+  accent-color: #e36d2e;
+}
+
+#asf-panel .asf-opt-category {
+  width: 100%;
+  min-height: 32px;
+  padding: 0 8px;
+  border: 1px solid #cdd6d8;
+  border-radius: 6px;
+  font: inherit;
+  font-size: 13px;
+  background: #fff;
+  color: inherit;
+}
+
+#asf-panel .asf-panel-status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  padding-top: 8px;
+  border-top: 1px solid #ece2da;
+  font-size: 12px;
+  font-weight: 700;
+  color: #5c3a24;
+}
+
+#asf-panel .asf-reveal {
+  min-height: 28px;
+  padding: 0 10px;
+  border: 0;
+  border-radius: 5px;
+  background: #e36d2e;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+#asf-panel .asf-reveal:hover {
+  background: #bd4f1b;
+}
+
+#asf-panel .asf-support {
+  display: block;
+  margin-top: 2px;
+  color: #8a5a3c;
+  font-size: 11px;
+  text-decoration: none;
+}
+
+#asf-panel .asf-support:hover {
+  text-decoration: underline;
+}
+
+@media (prefers-color-scheme: dark) {
+  .asf-warning-label {
+    border-color: #b3701f;
+    background: #3a2a12;
+    color: #f2c98a;
+  }
+
+  #asf-panel {
+    border-color: #4b3f37;
+    background: #211c19;
+    color: #e7dcd4;
+  }
+
+  #asf-panel .asf-panel-head {
+    background: #2c2521;
+  }
+
+  #asf-panel .asf-panel-collapse {
+    color: #b6a89c;
+  }
+
+  #asf-panel .asf-kw,
+  #asf-panel .asf-opt-category {
+    background: #17130f;
+    border-color: #4b3f37;
+    color: #e7dcd4;
+  }
+
+  #asf-panel .asf-panel-status {
+    border-top-color: #3a322c;
+    color: #e3c9b6;
+  }
+
+  #asf-panel .asf-support {
+    color: #c79c82;
+  }
+}
