@@ -9,8 +9,9 @@
 - ポップアップとページ内パネルに `https://buymeacoffee.com/maylab` へのリンクがある。
 - **拡張機能側のコードで必要な作業は「正しいユーザー名のリンクを開く」ことだけ**で、
   API キーや OAuth 連携は不要（Buy Me a Coffee はホスト型ページのため）。
+- スラッグは `maylab` で確定（コードのリンクは `https://buymeacoffee.com/maylab`）。
 - 実際に入金を受け取るために、開発者本人が buymeacoffee.com 側で次を済ませること:
-  1. アカウント作成 / メール認証（スラッグが `maylab` であることを確認）。
+  1. `maylab` のアカウント作成 / メール認証（スラッグが `maylab` になっているか確認）。
   2. Settings → Payouts で受取方法（Stripe 経由の銀行口座、または PayPal）を登録。
   3. 本人確認（KYC）が求められる場合は対応。
 - ユーザー名を変える場合は `popup.html` と `content.js` のリンク、および本ファイルを更新する。
@@ -41,8 +42,12 @@
 - [x] アイコン 16 / 32 / 48 / 128px（`icons/`、`manifest.json` に登録済み）
 - [x] `manifest.json`: name / version / description（132字以内）/ 最小権限（`storage` のみ、`host_permissions` なし）
 - [x] プレースホルダ値の排除（`ASSOCIATE_TAG` は空にして無効化）
-- [ ] プライバシーポリシーを公開URLで参照可能にする
-      （例: GitHub Pages、または `https://github.com/<user>/amazon-search-extension/blob/main/PRIVACY_POLICY.md`）
+- [x] プライバシーポリシーを公開URLで参照可能にする
+      - ソース: `docs/index.html`（GitHub Pages 用）
+      - 公開URL: `https://maylabstudio-lab.github.io/amazon-search-extension/`
+      - 有効化: GitHub リポジトリの Settings → Pages → Source を「Deploy from a branch」、
+        Branch を `main` / フォルダ `/docs` にして保存。数分後に上記URLで表示される。
+      - `PRIVACY_POLICY.md` を更新したら `docs/index.html` も合わせて更新する。
 - [ ] デベロッパー登録料 5 USD（初回のみ）の支払い
 - [ ] ストア掲載情報の入力（`STORE_LISTING.md` の文面を使用）
   - [ ] カテゴリ: ショッピング / 言語: 日本語

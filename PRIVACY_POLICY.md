@@ -1,5 +1,10 @@
 # プライバシーポリシー
 
+最終更新日: 2026年9月6日
+
+公開URL（Chrome Web Store 掲載用）: https://maylabstudio-lab.github.io/amazon-search-extension/
+（内容は `docs/index.html` と同一。片方を更新したらもう片方も更新すること。）
+
 ## 収集する情報
 
 Amazon Search Filterは、個人情報、検索キーワード、閲覧履歴、商品情報を開発者のサーバーへ収集・送信しません。外部サーバーとの通信は一切行いません。
