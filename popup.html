@@ -34,9 +34,11 @@
       label { display: block; margin-bottom: 7px; color: var(--muted); font-size: 12px; font-weight: 700; }
       input[type="search"], select { width: 100%; min-height: 42px; padding: 0 11px; border: 1px solid var(--line); border-radius: 7px; color: var(--ink); background: #fff; font: inherit; font-size: 14px; }
       input:focus, select:focus { border-color: var(--accent); outline: 3px solid #f7d7c5; }
-      .options { display: grid; gap: 11px; }
-      .check { display: flex; align-items: center; gap: 8px; margin: 0; color: var(--ink); font-size: 13px; font-weight: 500; }
-      .check input { width: 16px; height: 16px; accent-color: var(--accent); }
+      .options { display: grid; gap: 10px; }
+      .check { display: flex; align-items: flex-start; gap: 8px; margin: 0; color: var(--ink); font-size: 13px; font-weight: 500; line-height: 1.4; }
+      .check input { width: 16px; height: 16px; margin-top: 1px; accent-color: var(--accent); flex: none; }
+      .field label { margin-bottom: 6px; }
+      .hint { margin: 6px 0 0; color: var(--muted); font-size: 11px; line-height: 1.45; }
       button { min-height: 44px; border: 0; border-radius: 7px; color: #fff; background: var(--accent); font: inherit; font-size: 14px; font-weight: 800; cursor: pointer; }
       button:hover { background: var(--accent-dark); }
       button:focus-visible { outline: 3px solid #f0b496; outline-offset: 2px; }
@@ -61,28 +63,38 @@
           <input id="keyword" name="keyword" type="search" placeholder="商品名や型番" autocomplete="off" required autofocus>
         </div>
         <div class="options">
-          <label class="check"><input id="amazon-fulfilled" type="checkbox"> Amazonが発送する商品</label>
-          <label class="check"><input id="amazon-direct" type="checkbox"> Amazon直販商品</label>
-          <div>
-            <label for="discount">割引率</label>
-            <select id="discount" name="discount">
-              <option value="">指定なし</option>
-              <option value="10">10%以上</option>
-              <option value="20">20%以上</option>
-              <option value="30">30%以上</option>
-              <option value="40">40%以上</option>
-              <option value="50">50%以上</option>
-            </select>
-          </div>
+          <label class="check"><input id="exclude-suspicious" type="checkbox" checked> 正規品に絞る（規約外の商品名を検索結果で非表示にする）</label>
+          <label class="check"><input id="genuine-enabled" type="checkbox"> 「正規品」「国内正規品」を検索語に追加する</label>
+          <label class="check"><input id="amazon-fulfilled" type="checkbox"> Amazonが発送する商品にしぼる</label>
+          <label class="check"><input id="amazon-direct" type="checkbox"> Amazon直販商品にしぼる</label>
+          <label class="check"><input id="show-panel" type="checkbox" checked> Amazonのページに操作パネルを表示する</label>
+        </div>
+        <div class="field">
+          <label for="genuine-category">商品カテゴリ（任意）</label>
+          <select id="genuine-category" name="genuine-category">
+            <option value="">指定なし（共通のワードのみ）</option>
+          </select>
+          <p class="hint">「正規品に絞る」は、Amazonの商品名規約（ブランド名＋商品名＋仕様の順）に沿わない出品を検索結果ページで非表示にします。対象は ①スーパーコピー等の禁止ワードを含む ②商品名の先頭が「令和最新版」などの宣伝文句・装飾記号 の出品です（パネルの「すべて表示」で戻せます）。カテゴリを選ぶとそのジャンル特有の語も対象に加わります。チェックを外すと非表示にせず注意ラベルだけ付けます。</p>
+        </div>
+        <div class="field">
+          <label for="discount">割引率</label>
+          <select id="discount" name="discount">
+            <option value="">指定なし</option>
+            <option value="10">10%以上</option>
+            <option value="20">20%以上</option>
+            <option value="30">30%以上</option>
+            <option value="40">40%以上</option>
+            <option value="50">50%以上</option>
+          </select>
         </div>
         <button id="search-btn" type="submit">Amazonで検索する</button>
       </form>
       <section class="support" aria-label="開発者を支援">
         <p>この拡張機能が役立ったら、コーヒー1杯分のご支援をお願いします。</p>
-        <a id="support-link" class="support-link" href="https://buymeacoffee.com/maylab" target="_blank" rel="noopener noreferrer">開発者を支援する</a>
+        <a id="support-link" class="support-link" href="https://buymeacoffee.com/maylab" target="_blank" rel="noopener noreferrer">開発者を支援する（Buy Me a Coffee）</a>
       </section>
-      <p class="affiliate-note">本拡張機能はAmazonアソシエイト・プログラムを使用しています。</p>
     </main>
+    <script src="dictionary.js"></script>
     <script src="popup.js"></script>
   </body>
 </html>

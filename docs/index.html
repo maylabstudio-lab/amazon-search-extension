@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>プライバシーポリシー — Amazon Search Filter</title>
+    <meta
+      name="description"
+      content="Chrome 拡張機能「Amazon Search Filter」のプライバシーポリシー。収集する情報、ローカル保存、外部送信の有無について説明します。"
+    />
+    <style>
+      :root {
+        color-scheme: light dark;
+        --ink: #1d292f;
+        --muted: #65747a;
+        --line: #d7e0e2;
+        --paper: #f6f8f5;
+        --card: #ffffff;
+        --accent: #bd4f1b;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --ink: #e8edee;
+          --muted: #9fb0b5;
+          --line: #33424a;
+          --paper: #121a1e;
+          --card: #1a2429;
+          --accent: #e88a4f;
+        }
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        padding: 0 20px;
+        color: var(--ink);
+        background: var(--paper);
+        font-family: -apple-system, BlinkMacSystemFont, "Hiragino Kaku Gothic ProN",
+          "Yu Gothic", Meiryo, sans-serif;
+        line-height: 1.75;
+      }
+      main {
+        max-width: 720px;
+        margin: 0 auto;
+        padding: 48px 0 80px;
+      }
+      .eyebrow {
+        margin: 0 0 6px;
+        color: var(--accent);
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.09em;
+        text-transform: uppercase;
+      }
+      h1 {
+        margin: 0 0 8px;
+        font-size: 28px;
+        line-height: 1.3;
+      }
+      .updated {
+        margin: 0 0 32px;
+        color: var(--muted);
+        font-size: 13px;
+      }
+      h2 {
+        margin: 36px 0 10px;
+        padding-top: 18px;
+        border-top: 1px solid var(--line);
+        font-size: 18px;
+      }
+      p { margin: 0 0 14px; }
+      ul { margin: 0 0 14px; padding-left: 22px; }
+      li { margin-bottom: 6px; }
+      code {
+        padding: 1px 5px;
+        border-radius: 4px;
+        background: var(--card);
+        border: 1px solid var(--line);
+        font-size: 0.88em;
+      }
+      a { color: var(--accent); }
+      footer {
+        margin-top: 48px;
+        padding-top: 18px;
+        border-top: 1px solid var(--line);
+        color: var(--muted);
+        font-size: 12px;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <p class="eyebrow">Amazon Search Filter</p>
+      <h1>プライバシーポリシー</h1>
+      <p class="updated">最終更新日: 2026年9月6日</p>
+
+      <h2>収集する情報</h2>
+      <p>
+        Amazon Search Filter は、個人情報、検索キーワード、閲覧履歴、商品情報を開発者のサーバーへ
+        収集・送信しません。外部サーバーとの通信は一切行いません。
+      </p>
+
+      <h2>ローカル保存</h2>
+      <p>
+        本拡張機能は、ポップアップまたはページ内パネルで選択した設定（「正規品に絞る」、正規品ワードの付加、
+        カテゴリ、発送元・直販・割引率、パネルの表示可否）を <code>chrome.storage.sync</code> に保存します。
+        パネルの開閉状態は各サイトの <code>localStorage</code> に保存します。いずれもお使いの端末および
+        Google アカウントに同期される Chrome 内のみで、開発者や第三者へ送信されることはありません。
+        検索キーワードは保存しません。
+      </p>
+      <p>
+        保存した設定は、Chrome の拡張機能管理画面から本拡張機能を削除すると消去されます。
+      </p>
+
+      <h2>Amazon.co.jp ページ内での動作</h2>
+      <p>
+        本拡張機能は <code>https://www.amazon.co.jp/</code> 配下のページで動作し、次の処理をページ内で行います。
+        いずれも商品情報の収集・保存・外部送信は行いません。
+      </p>
+      <ul>
+        <li>折りたためる操作パネルを表示します（ポップアップの設定でオフにできます）。</li>
+        <li>
+          検索結果ページ（<code>/s</code>）では、表示されている商品タイトルの文字列を、あらかじめ拡張機能内に持つ
+          禁止ワードの一覧および商品名規約の判定ルールと照合し、規約外と判定した出品を非表示または注意ラベル表示にします。
+        </li>
+      </ul>
+
+      <h2>Amazon アソシエイト・プログラム</h2>
+      <p>
+        現在のバージョンは、Amazon アソシエイト・プログラムを利用していません。生成する検索 URL に
+        アソシエイトタグ（<code>tag</code> パラメータ）を付与しません。将来的に導入する場合は、この
+        プライバシーポリシーと Chrome Web Store の掲載情報を更新し、ポップアップおよびストア説明で明示します。
+      </p>
+
+      <h2>任意の支援</h2>
+      <p>
+        開発者への任意の支援を選択した場合、外部の支援サービス（Buy Me a Coffee）へ移動します。支援に関する
+        決済情報を本拡張機能が取得・保存することはありません。支援サービス上のデータ処理については、同サービスの
+        プライバシーポリシーが適用されます。
+      </p>
+
+      <h2>変更</h2>
+      <p>
+        本ポリシーを変更する場合は、このページと Chrome Web Store の掲載情報を更新します。
+      </p>
+
+      <h2>お問い合わせ</h2>
+      <p>
+        本ポリシーに関するお問い合わせは
+        <a href="mailto:maylab.studio@gmail.com">maylab.studio@gmail.com</a> までご連絡ください。
+      </p>
+
+      <footer>
+        Amazon Search Filter — Chrome 拡張機能。ソースコード:
+        <a href="https://github.com/maylabstudio-lab/amazon-search-extension"
+          >github.com/maylabstudio-lab/amazon-search-extension</a
+        >
+      </footer>
+    </main>
+  </body>
+</html>
